@@ -6,16 +6,25 @@ import express from 'express'
 import { Liquid } from 'liquidjs';
 
 
-console.log('Hieronder moet je waarschijnlijk nog wat veranderen')
+const apiEndpoint = "https://fdnd-agency.directus.app/items/dropandheal_"
+const apiTask = "task"
+const apiExercise = "exercise"
+
+
+
+//console.log('Hieronder moet je waarschijnlijk nog wat veranderen')
 // Doe een fetch naar de data die je nodig hebt
-// const apiResponse = await fetch('...')
+const taskResponse = await fetch(`${apiEndpoint}${apiTask}`)
+const exerciseResponse = await fetch(`${apiEndpoint}${apiExercise}`)
 
 // Lees van de response van die fetch het JSON object in, waar we iets mee kunnen doen
-// const apiResponseJSON = await apiResponse.json()
+const taskResponseJSON = await taskResponse.json()
+const exerciseResponseJSON = await exerciseResponse.json()
+
 
 // Controleer eventueel de data in je console
 // (Let op: dit is _niet_ de console van je browser, maar van NodeJS, in je terminal)
-// console.log(apiResponseJSON)
+ //console.log(apiResponseJSON)
 
 
 // Maak een nieuwe Express applicatie aan, waarin we de server configureren
@@ -37,8 +46,11 @@ app.set('views', './views')
 app.get('/', async function (request, response) {
    // Render index.liquid uit de Views map
    // Geef hier eventueel data aan mee
-   response.render('index.liquid')
-})
+   response.render('index.liquid', {
+    task: taskResponseJSON.data, 
+    exercise: exerciseResponseJSON.data})
+  })
+
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt

@@ -1,1 +1,18 @@
-Succes!
+{% render 'partials/head.liquid' %}
+
+<h1>Drop & heal</h1>
+
+<h2>description</h2>
+    <ul>
+        {% for description in exercise %}
+            <li>{{ exercise.description }}</li>
+        {% endfor %}
+    </ul>
+<p> Team: {{ data.id }} </p> 
+
+     
+
+
+<footer></footer>
+
+{% render 'partials/foot.liquid' %}
