@@ -1,14 +1,22 @@
 {% render 'partials/head.liquid' %}
+<P>{{task.0.title}}</P>
 
-<h1>Drop & heal</h1>
+
+<h1>{{task.1.title}}</h1>
+<P>{{task.0.description}}</P>
+<p>47 community drops</p>
+
+
+{% # <p>{{task|json}}</p> %}
 
 <h2>description</h2>
     <ul>
-        {% for description in exercise %}
-            <li>{{ exercise.description }}</li>
+        {% for title in task %}
+            <li>{{ task.0.title }}</li>
         {% endfor %}
     </ul>
-<p> Team: {{ data.id }} </p> 
+    
+<p> Team: {{ exercise.json }} </p> 
 
      
 
