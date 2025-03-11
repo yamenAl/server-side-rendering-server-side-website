@@ -1,0 +1,18 @@
+<header>
+    <h1>{{ title }}</h1>
+
+    {% if tasksy %}
+      <h2>{{ tasksy.title }}</h2>
+      <p>{{ tasksy.description }}</p>
+    {% else %}
+      <p>❌ No task data available</p>
+    {% endif %}
+    
+    {% if exercisesy %}
+      <h2>{{ exercisesy.title }}</h2>
+      <p>{{ exercisesy.description }}</p>
+    {% else %}
+      <p>❌ No exercise data available</p>
+    {% endif %}
+    
+</header>

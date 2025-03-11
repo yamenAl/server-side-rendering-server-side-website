@@ -12,18 +12,13 @@ const specificTaskApi = 'https://fdnd-agency.directus.app/items/dropandheal_task
 const specificExerciseApi = 'https://fdnd-agency.directus.app/items/dropandheal_exercise/?filter={"id":1}';
 
 
-
-
-
-
 //console.log('Hieronder moet je waarschijnlijk nog wat veranderen')
 // Doe een fetch naar de data die je nodig hebt
-  const tasksResponse = await fetch(apiTasks);
-  const exercisesResponse = await fetch(apiExercises);
+const tasksResponse = await fetch(apiTasks);
+const exercisesResponse = await fetch(apiExercises);
 // Fetch specific (id = 1)
-  const specificTaskResponse = await fetch(specificTaskApi);
-  const specificExerciseResponse = await fetch(specificExerciseApi);
-
+const specificTaskResponse = await fetch(specificTaskApi);
+const specificExerciseResponse = await fetch(specificExerciseApi);
 
 
 // Lees van de response van die fetch het JSON object in, waar we iets mee kunnen doen
@@ -32,13 +27,13 @@ const exercisesData = await exercisesResponse.json();
 const specificTaskData = await specificTaskResponse.json();
 const specificExerciseData = await specificExerciseResponse.json();
 
-
+// making exercisey snigel object not array
+const taskObject = Array.isArray(specificTaskData.data) ? specificTaskData.data[0] : specificTaskData.data;
+const exerciseObject = Array.isArray(specificExerciseData.data) ? specificExerciseData.data[0] : specificExerciseData.data;
 
 
 // Controleer eventueel de data in je console
 // (Let op: dit is _niet_ de console van je browser, maar van NodeJS, in je terminal)
-//console.log(taskResponse.data)
-
 
 // Maak een nieuwe Express applicatie aan, waarin we de server configureren
 const app = express()
@@ -61,14 +56,36 @@ app.get('/', async function (request, response) {
   response.render('index.liquid', {
     title: 'index',
     task: tasksData.data, // All tasks
-    exercise: exercisesData.data, // All exercises
-    tasky: specificTaskData.data, // Specific task (id = 1)
-    exercisey: specificExerciseData.data 
+    exercise: exercisesData.data, 
+    taskObject: taskObject, 
+    exerciseObject: exerciseObject 
+  })
+})
+//app.get('/header', async function (request, response) {
+   // response.render('header.liquid', {
+    //  title: 'header',
+    //  tasksy: specificTaskData.data, // Specific task id = 1
+   //   exercisesy: exercisey // First specific exercise object
+      
+ // })
+//})
+//console.log(exercisey)
+
+app.get('/het-verlies-aanvaarden', async function (request, response) {
+  // Render index.liquid uit de Views map
+  // Geef hier eventueel data aan mee
+  
+
+    response.render('het-verlies-aanvaarden.liquid', {
+      title: 'rouwtaak-blue',
+      tasky: specificTaskData.data, // Specific task id = 1
+      exerciseObject: exerciseObject // First specific exercise object
   })
 })
 
 
-  //10/03 workshop
+
+  //10/03
   //Route path: /users/:userId/books/:bookId
  //Request URL: http://localhost:3000/users/34/books/8989
 // req.params: { "userId": "34", "bookId": "8989" }
@@ -103,7 +120,9 @@ app.listen(app.get('port'), function () {
   // Toon een bericht in de console en geef het poortnummer door
   console.log(`let's go application started on http://localhost:${app.get('port')}`)
 })
-
+app.use((req, res, next) => {
+  res.status(404).send("'/example/b")
+})
 //foutmelding
 app.use((req, res, next) => {
   res.status(404).redirect('/'); // Gebruiker wordt doorgestuurd naar de /home pagina

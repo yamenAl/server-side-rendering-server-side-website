@@ -1,20 +1,48 @@
 {% render 'partials/head.liquid' %}
-<P>{{task.0.title}}</P>
+{% render "partials/header.liquid" %}
 
 
-<h1>{{task.1.title}}</h1>
-<P>{{task.0.description}}</P>
+<p>{{taskObject.title}}</p>
+
+<h2>{{tasky.title}}</h2>
+
+{% for tasky in tasky %}    
+    <h2>{{tasky.title}}</h2>
+{% endfor %}
+<ul>
+{% for task in task %}    
+    <h1>{{ task.theme }}</h1>
+    <li>{{ task.title }}</li>
+    <li>{{ task.description }}</li>
+
+{% endfor %}
+</ul>
+
+
+<h1>{{exercises.title}}</h1>
+<P>{{exercises.4.description}}</P>
 <p>47 community drops</p>
+<p>25 mint</p>
+<p>3</p>
+
+
 
 
 {% # <p>{{task|json}}</p> %}
 
 <h2>description</h2>
+
     <ul>
-        {% for title in task %}
-            <li>{{ task.0.title }}</li>
+        {% for exercise in exercises %}
+            <li>{{ exercise.title }}</li>
         {% endfor %}
     </ul>
+
+    <ul>
+        <li>{{ task.0.title }}</li>
+        <li>{{ exercise.0.title }}</li>
+    </ul>
+
     
 <p> Team: {{ exercise.json }} </p> 
 
