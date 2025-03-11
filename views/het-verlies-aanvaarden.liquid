@@ -1,43 +1,45 @@
 {% render 'partials/head.liquid' %}
-<button>X</button>
+{% include 'partials/header.liquid' %} 
+<main>
+    <button>X</button>
 
-<img src="https://fdnd-agency.directus.app/assets/{{ exerciseObject.image }}" alt="{{ exerciseObject.title }} foto">
-<section>
+    <img src="https://fdnd-agency.directus.app/assets/{{ exerciseObject.image }}" alt="{{ exerciseObject.title }} foto">
     <section>
-        <ul>
-            <li><h3>Schrijven</h3></li>
-            <li>|</li>
-            <li>25 min</li>
-            <li>
-                <img src="/assets/icons/community-drops-color.svg" alt="community-drops icon">
-            </li>
-            <li>
-                <h3>47 community drops</h3> 
-            </li>
-        </ul>
-    </section>
-    <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-    <h1>{{exerciseObject.task}}</h1>'
-    <h1>{{exercisesFilter.description}}</h1>
-    {% for exercise in exercisesFilter %}
         <section>
-            <h1>{{exercise.title}}</h1>
-            <p>{{exercise.description}}</p>
+            <ul>
+                <li><h3>Schrijven</h3></li>
+                <li>|</li>
+                <li>25 min</li>
+                <li>
+                    <img src="/assets/icons/community-drops-color.svg" alt="community-drops icon">
+                </li>
+                <li>
+                    <h3>47 community drops</h3> 
+                </li>
+            </ul>S
         </section>
-    {% endfor %}
-    <button class="right-arrow central">arrow</button>
-    <button class="right-arrow central">arrow</button>
-    <button class="left-arrow central">arrow</button>
-    <button class="start-arrow central">start</button>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <h1>{{exerciseObject.task}}</h1>'
+        <h1>{{exercisesFilter.description}}</h1>
+        {% for exercise in exercisesFilter %}
+            <section>
+                <h1>{{exercise.title}}</h1>
+                <p>{{exercise.description}}</p>
+            </section>
+        {% endfor %}
+        <button class="right-arrow central">arrow</button>
+        <button class="right-arrow central">arrow</button>
+        <button class="left-arrow central">arrow</button>
+        <button class="start-arrow central">start</button>
+    </section>
+</main>
 
 
-
-
-</section>
-
+{% render 'partials/footer.liquid' %}
 {% render 'partials/foot.liquid' %}
+
