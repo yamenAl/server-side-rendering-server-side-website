@@ -1,54 +1,63 @@
 {% render 'partials/head.liquid' %}
 {% render "partials/header.liquid" %}
+<section>
+    <img src="/assets/photos/rouwtaak-blue.svg" alt="rouwtaak Image">
+    <h1>Rouwstappen van het dag</h1>
+    <p>3 oefeningen open vandaag</p>
+</section>
+<section>
+    <img src="https://fdnd-agency.directus.app/assets/{{ exerciseObject.image }}" alt="{{ exerciseObject.title }} foto">
+    <button type="submit" class="start-oefening-btn">Start oefening</button>
+    <p>Schrijven</p>
+    <h1>Ons leven samen</h1>
+    <section> 
+        <img src="/assets/icons/community-drops-color.svg" alt="community-drops icon">
+        <h3>47 community drops</h3>
+        <ul>
+            <li>     
+                <img src="/assets/icons/time.svg" alt="time icon">
+                <P>25 min</P>
+            </li>
+            <li>     
+                <img src="/assets/icons/time.svg" alt="tips icon">
+                <P>3 tips</P>
+            </li>      
+        </ul>        
+    </section>
+</section>
 
+<section>
+    <p>Lezen</p>
+    <h1>Rouwen, hoe doe je dat?</h1>
+    <section class="community-drops">
+        <ul>
+            <li>     
+                <img src="/assets/icons/community-drops-color.svg" alt="community-drops icon">
+                <P>17 community drops</P>
+            </li>
+            <li>     
+                <img src="/assets/icons/time.svg" alt="time icon">
+                <P>15 min</P>
+            </li>     
+        </ul>        
+    </section>
+</section>
+<section>
+    <p>Meditatie</p>
+    <h1>Golven van ongeloof</h1>
+    <section class="community-drops">
+        <ul>
+            <li>     
+                <img src="/assets/icons/community-drops-color.svg" alt="rcommunity-drops icon">
+                <P>36 community drops</P>
+            </li>
+            <li>     
+                <img src="/assets/icons/time.svg" alt="time icon">
+                <P>3 min</P>
+            </li>     
+        </ul>        
+    </section>
+</section>
 
-<p>{{taskObject.title}}</p>
-
-<h2>{{tasky.title}}</h2>
-
-{% for tasky in tasky %}    
-    <h2>{{tasky.title}}</h2>
-{% endfor %}
-<ul>
-{% for task in task %}    
-    <h1>{{ task.theme }}</h1>
-    <li>{{ task.title }}</li>
-    <li>{{ task.description }}</li>
-
-{% endfor %}
-</ul>
-
-
-<h1>{{exercises.title}}</h1>
-<P>{{exercises.4.description}}</P>
-<p>47 community drops</p>
-<p>25 mint</p>
-<p>3</p>
-
-
-
-
-{% # <p>{{task|json}}</p> %}
-
-<h2>description</h2>
-
-    <ul>
-        {% for exercise in exercises %}
-            <li>{{ exercise.title }}</li>
-        {% endfor %}
-    </ul>
-
-    <ul>
-        <li>{{ task.0.title }}</li>
-        <li>{{ exercise.0.title }}</li>
-    </ul>
-
-    
-<p> Team: {{ exercise.json }} </p> 
-
-     
-
-
-<footer></footer>
-
+{% render 'partials/footer.liquid' %}
 {% render 'partials/foot.liquid' %}

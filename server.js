@@ -84,25 +84,6 @@ app.get('/het-verlies-aanvaarden', async function (request, response) {
 })
 
 
-
-  //10/03
-  //Route path: /users/:userId/books/:bookId
- //Request URL: http://localhost:3000/users/34/books/8989
-// req.params: { "userId": "34", "bookId": "8989" }
-//app.get('/users/:userId/books/:bookId', (req, res) => {
- // res.send(req.params)
-//})
-//app.get('/example/a', (req, res) => {
-//  res.send('Hello from A!')
-//})
-//app.get('/example/b', (req, res, next) => {
- // console.log('the response will be sent by the next function ...')
- // next()
-//}, (req, res) => {
-//  res.send('Hello from B!')
-//})
-
-
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
 app.post('/', async function (request, response) {
