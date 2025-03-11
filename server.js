@@ -6,25 +6,38 @@ import express from 'express'
 import { Liquid } from 'liquidjs';
 
 
-const apiEndpoint = "https://fdnd-agency.directus.app/items/dropandheal_"
-const apiTask = "task"
-const apiExercise = "exercise"
+const apiTasks = "https://fdnd-agency.directus.app/items/dropandheal_task/?fields=id,*";
+const apiExercises = "https://fdnd-agency.directus.app/items/dropandheal_exercise/?fields=id,*";
+const specificTaskApi = 'https://fdnd-agency.directus.app/items/dropandheal_task/?filter={"id":1}';
+const specificExerciseApi = 'https://fdnd-agency.directus.app/items/dropandheal_exercise/?filter={"id":1}';
+
+
+
 
 
 
 //console.log('Hieronder moet je waarschijnlijk nog wat veranderen')
 // Doe een fetch naar de data die je nodig hebt
-const taskResponse = await fetch(`${apiEndpoint}${apiTask}`)
-const exerciseResponse = await fetch(`${apiEndpoint}${apiExercise}`)
+  const tasksResponse = await fetch(apiTasks);
+  const exercisesResponse = await fetch(apiExercises);
+// Fetch specific (id = 1)
+  const specificTaskResponse = await fetch(specificTaskApi);
+  const specificExerciseResponse = await fetch(specificExerciseApi);
+
+
 
 // Lees van de response van die fetch het JSON object in, waar we iets mee kunnen doen
-const taskResponseJSON = await taskResponse.json()
-const exerciseResponseJSON = await exerciseResponse.json()
+const tasksData = await tasksResponse.json();
+const exercisesData = await exercisesResponse.json();
+const specificTaskData = await specificTaskResponse.json();
+const specificExerciseData = await specificExerciseResponse.json();
+
+
 
 
 // Controleer eventueel de data in je console
 // (Let op: dit is _niet_ de console van je browser, maar van NodeJS, in je terminal)
- //console.log(apiResponseJSON)
+//console.log(taskResponse.data)
 
 
 // Maak een nieuwe Express applicatie aan, waarin we de server configureren
@@ -42,14 +55,35 @@ app.engine('liquid', engine.express());
 // Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
 app.set('views', './views')
 
-// Maak een GET route voor de index (meestal doe je dit in de root, als /)
 app.get('/', async function (request, response) {
-   // Render index.liquid uit de Views map
-   // Geef hier eventueel data aan mee
-   response.render('index.liquid', {
-    task: taskResponseJSON.data, 
-    exercise: exerciseResponseJSON.data})
+  // Render index.liquid uit de Views map
+  // Geef hier eventueel data aan mee
+  response.render('index.liquid', {
+    title: 'index',
+    task: tasksData.data, // All tasks
+    exercise: exercisesData.data, // All exercises
+    tasky: specificTaskData.data, // Specific task (id = 1)
+    exercisey: specificExerciseData.data 
   })
+})
+
+
+  //10/03 workshop
+  //Route path: /users/:userId/books/:bookId
+ //Request URL: http://localhost:3000/users/34/books/8989
+// req.params: { "userId": "34", "bookId": "8989" }
+//app.get('/users/:userId/books/:bookId', (req, res) => {
+ // res.send(req.params)
+//})
+//app.get('/example/a', (req, res) => {
+//  res.send('Hello from A!')
+//})
+//app.get('/example/b', (req, res, next) => {
+ // console.log('the response will be sent by the next function ...')
+ // next()
+//}, (req, res) => {
+//  res.send('Hello from B!')
+//})
 
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
@@ -67,5 +101,10 @@ app.set('port', process.env.PORT || 8000)
 // Start Express op, haal daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {
   // Toon een bericht in de console en geef het poortnummer door
-  console.log(`Application started on http://localhost:${app.get('port')}`)
+  console.log(`let's go application started on http://localhost:${app.get('port')}`)
 })
+
+//foutmelding
+app.use((req, res, next) => {
+  res.status(404).redirect('/'); // Gebruiker wordt doorgestuurd naar de /home pagina
+});
