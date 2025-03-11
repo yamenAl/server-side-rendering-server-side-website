@@ -10,6 +10,7 @@ const apiTasks = "https://fdnd-agency.directus.app/items/dropandheal_task/?field
 const apiExercises = "https://fdnd-agency.directus.app/items/dropandheal_exercise/?fields=id,*";
 const specificTaskApi = 'https://fdnd-agency.directus.app/items/dropandheal_task/?filter={"id":1}';
 const specificExerciseApi = 'https://fdnd-agency.directus.app/items/dropandheal_exercise/?filter={"id":1}';
+const exerciseFilteredApi = 'https://fdnd-agency.directus.app/items/dropandheal_exercise/?filter={"task":1}&fields=id,task,title,description,image';
 
 
 //console.log('Hieronder moet je waarschijnlijk nog wat veranderen')
@@ -19,6 +20,8 @@ const exercisesResponse = await fetch(apiExercises);
 // Fetch specific (id = 1)
 const specificTaskResponse = await fetch(specificTaskApi);
 const specificExerciseResponse = await fetch(specificExerciseApi);
+const exerciseFilteredResponse = await fetch(exerciseFilteredApi);
+
 
 
 // Lees van de response van die fetch het JSON object in, waar we iets mee kunnen doen
@@ -26,10 +29,13 @@ const tasksData = await tasksResponse.json();
 const exercisesData = await exercisesResponse.json();
 const specificTaskData = await specificTaskResponse.json();
 const specificExerciseData = await specificExerciseResponse.json();
+const exerciseFilterData = await exerciseFilteredResponse.json();
+
 
 // making exercisey snigel object not array
 const taskObject = Array.isArray(specificTaskData.data) ? specificTaskData.data[0] : specificTaskData.data;
 const exerciseObject = Array.isArray(specificExerciseData.data) ? specificExerciseData.data[0] : specificExerciseData.data;
+
 
 
 // Controleer eventueel de data in je console
@@ -55,8 +61,8 @@ app.get('/', async function (request, response) {
   // Geef hier eventueel data aan mee
   response.render('index.liquid', {
     title: 'index',
-    task: tasksData.data, 
-    exercise: exercisesData.data, 
+    tasks: tasksData.data, 
+    exercises: exercisesData.data, 
     taskObject: taskObject, 
     exerciseObject: exerciseObject 
   })
@@ -75,10 +81,15 @@ app.get('/header', async function (request, response) {
 
 app.get('/het-verlies-aanvaarden', async function (request, response) {
   // Geef hier eventueel data aan mee
+  //only this const i take it from example from google
+  const filteredExercises = exercisesData.data.filter(exercise => exercise.task === 1);
+  
   
     response.render('het-verlies-aanvaarden.liquid', {
       title: 'rouwtaak-blue',
-      task: tasksData.data, 
+      tasks: tasksData.data, 
+      exercises: exercisesData.data, 
+      exercisesFilter: filteredExercises, 
       exerciseObject: exerciseObject // First specific exercise object
   })
 })
@@ -101,9 +112,7 @@ app.listen(app.get('port'), function () {
   // Toon een bericht in de console en geef het poortnummer door
   console.log(`let's go application started on http://localhost:${app.get('port')}`)
 })
-app.use((req, res, next) => {
-  res.status(404).send("'/example/b")
-})
+
 //foutmelding
 app.use((req, res, next) => {
   res.status(404).redirect('/'); // Gebruiker wordt doorgestuurd naar de /home pagina

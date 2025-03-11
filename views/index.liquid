@@ -1,63 +1,65 @@
 {% render 'partials/head.liquid' %}
-{% render "partials/header.liquid" %}
-<section>
-    <img src="/assets/photos/rouwtaak-blue.svg" alt="rouwtaak Image">
-    <h1>Rouwstappen van het dag</h1>
-    <p>3 oefeningen open vandaag</p>
-</section>
-<section>
-    <img src="https://fdnd-agency.directus.app/assets/{{ exerciseObject.image }}" alt="{{ exerciseObject.title }} foto">
-    <button type="submit" class="start-oefening-btn">Start oefening</button>
-    <p>Schrijven</p>
-    <h1>Ons leven samen</h1>
-    <section> 
-        <img src="/assets/icons/community-drops-color.svg" alt="community-drops icon">
-        <h3>47 community drops</h3>
-        <ul>
-            <li>     
-                <img src="/assets/icons/time.svg" alt="time icon">
-                <P>25 min</P>
-            </li>
-            <li>     
-                <img src="/assets/icons/time.svg" alt="tips icon">
-                <P>3 tips</P>
-            </li>      
-        </ul>        
+{% include 'partials/header.liquid' %} 
+<main>
+    <section>
+        <img src="/assets/photos/rouwtaak-blue.svg" alt="rouwtaak Image">
+        <h1>Rouwstappen van het dag</h1>
+        <p>3 oefeningen open vandaag</p>
     </section>
-</section>
+    <section>
+        <img src="https://fdnd-agency.directus.app/assets/{{ exerciseObject.image }}" alt="{{ exerciseObject.title }} foto">
+        <section> 
+            <button type="submit" class="start-oefening-btn">Start oefening</button>
+            <p>Schrijven</p>
+            <h2>Ons leven samen</h2>
+            <img src="/assets/icons/community-drops-color.svg" alt="community-drops icon">
+            <h3>47 community drops</h3>
+            <ul>
+                <li>     
+                    <img src="/assets/icons/time.svg" alt="time icon">
+                    <P>25 min</P>
+                </li>
+                <li>     
+                    <img src="/assets/icons/time.svg" alt="tips icon">
+                    <P>3 tips</P>
+                </li>      
+            </ul>        
+        </section>
+    </section>
 
-<section>
-    <p>Lezen</p>
-    <h1>Rouwen, hoe doe je dat?</h1>
-    <section class="community-drops">
-        <ul>
-            <li>     
-                <img src="/assets/icons/community-drops-color.svg" alt="community-drops icon">
-                <P>17 community drops</P>
-            </li>
-            <li>     
-                <img src="/assets/icons/time.svg" alt="time icon">
-                <P>15 min</P>
-            </li>     
-        </ul>        
+    <section>
+        <p>Lezen</p>
+        <h2>Rouwen, hoe doe je dat?</h2>
+        <section class="community-drops">
+            <ul>
+                <li>     
+                    <img src="/assets/icons/community-drops-color.svg" alt="community-drops icon">
+                    <P>17 community drops</P>
+                </li>
+                <li>     
+                    <img src="/assets/icons/time.svg" alt="time icon">
+                    <P>15 min</P>
+                </li>     
+            </ul>        
+        </section>
     </section>
-</section>
-<section>
-    <p>Meditatie</p>
-    <h1>Golven van ongeloof</h1>
-    <section class="community-drops">
-        <ul>
-            <li>     
-                <img src="/assets/icons/community-drops-color.svg" alt="rcommunity-drops icon">
-                <P>36 community drops</P>
-            </li>
-            <li>     
-                <img src="/assets/icons/time.svg" alt="time icon">
-                <P>3 min</P>
-            </li>     
-        </ul>        
+    <section>
+        <p>Meditatie</p>
+        <h2>Golven van ongeloof</h2>
+        <section class="community-drops">
+            <ul>
+                <li>     
+                    <img src="/assets/icons/community-drops-color.svg" alt="rcommunity-drops icon">
+                    <P>36 community drops</P>
+                </li>
+                <li>     
+                    <img src="/assets/icons/time.svg" alt="time icon">
+                    <P>3 min</P>
+                </li>     
+            </ul>        
+        </section>
     </section>
-</section>
+</main>
 
 {% render 'partials/footer.liquid' %}
 {% render 'partials/foot.liquid' %}
