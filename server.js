@@ -55,30 +55,30 @@ app.get('/', async function (request, response) {
   // Geef hier eventueel data aan mee
   response.render('index.liquid', {
     title: 'index',
-    task: tasksData.data, // All tasks
+    task: tasksData.data, 
     exercise: exercisesData.data, 
     taskObject: taskObject, 
     exerciseObject: exerciseObject 
   })
+  
 })
-//app.get('/header', async function (request, response) {
-   // response.render('header.liquid', {
-    //  title: 'header',
-    //  tasksy: specificTaskData.data, // Specific task id = 1
-   //   exercisesy: exercisey // First specific exercise object
-      
- // })
-//})
+
 //console.log(exercisey)
+app.get('/header', async function (request, response) {
+  // Geef hier eventueel data aan mee
+
+    response.render('partials/header.liquid', {
+      task: tasksData.data, 
+      exerciseObject: exerciseObject // First specific exercise object
+  })
+})
 
 app.get('/het-verlies-aanvaarden', async function (request, response) {
-  // Render index.liquid uit de Views map
   // Geef hier eventueel data aan mee
   
-
     response.render('het-verlies-aanvaarden.liquid', {
       title: 'rouwtaak-blue',
-      tasky: specificTaskData.data, // Specific task id = 1
+      task: tasksData.data, 
       exerciseObject: exerciseObject // First specific exercise object
   })
 })
