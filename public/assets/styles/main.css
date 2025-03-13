@@ -86,16 +86,26 @@ main {
 
 
 .rouwtaak-card {
-    border: 0.5em solid var(--secondary-color); 
-    border-radius: 1em;
+    border: 0.5em  solid var(--secondary-color); 
+    border-radius: 1.5em;
     max-width: 90%;
-    padding: 1rem;
     
 }
-.rouwtaak-card .rouwtaak-img {
-    width: 100%; 
-    height: auto; 
+.rouwtaak-card {
+    margin: 0; /* Removes margin */
+  
 }
+.rouwtaak-img {
+    border-radius: 1em 1em 0 0;
+    width: 100%; /* Keep full width */
+    height: 10em; /* Adjust height to make it shorter */
+    object-fit: cover; /* Ensures the image fills the space without stretching */
+    overflow: hidden; /* Ensures the border-radius applies properly */
+    display: block; /* Prevents inline spacing issues */
+    margin: 0; /* Removes any default margin */
+    padding: 0; 
+}
+
 /*need work start button*/
 .start-oefening-btn{
     background-color: black;

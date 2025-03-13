@@ -115,7 +115,7 @@ app.listen(app.get('port'), function () {
   console.log(`let's go application started on http://localhost:${app.get('port')}`)
 })
 
-//foutmelding
+//404 error send to index
 app.use((req, res, next) => {
-  res.status(404).redirect('/'); // Gebruiker wordt doorgestuurd naar de /home pagina
+  res.status(404).redirect('/'); 
 });
