@@ -75,6 +75,8 @@ app.get('/header', async function (request, response) {
 
     response.render('partials/header.liquid', {
       task: tasksData.data, 
+      taskObject: taskObject, 
+
       exerciseObject: exerciseObject // First specific exercise object
   })
 })
