@@ -70,10 +70,10 @@ This ensures that when a user enters an invalid link, they are redirected to a c
 
 
 ## Achievements
-Loaded tasks and exercises data dynamically on both the index page and the grief task (rouwtaak) page.
-1.Fetched and displayed exercises based on the selected rouwtaak using Express.js and LiquidJS.
-2.Implemented filtering to ensure users only see exercises relevant to their rouwtaak task id.
-3.Optimized API calls to retrieve only necessary data, improving performance.
+Loaded tasks and exercises data dynamically on both the index page and the grief task (rouwtaak) page.<br>
+1.Fetched and displayed exercises based on the selected rouwtaak using Express.js and LiquidJS.<br>
+2.Implemented filtering to ensure users only see exercises relevant to their rouwtaak task id.<br>
+3.Optimized API calls to retrieve only necessary data, improving performance.<br>
 ## Home page.
 ![home-page](https://github.com/user-attachments/assets/5405dc99-1d55-4a73-be12-2f7d19ab7de9)
 ## Rouwtaak page.
