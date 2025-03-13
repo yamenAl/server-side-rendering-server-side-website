@@ -1,13 +1,21 @@
 {% render 'partials/head.liquid' %}
 {% include 'partials/header.liquid' %} 
 <main>
-    <section>
-        <img src="/assets/photos/rouwtaak-blue.svg" alt="rouwtaak Image">
-        <h1>Rouwstappen van het dag</h1>
+    <section class="top-view">
+        <ul class="top-icons">
+            <li><img src="/assets/photos/Mesh-Grad-blue.svg" alt="rouwtaak mesh icon"></li>
+            <li class="main-rouwtaak-icon"><img src="/assets/photos/rouwtaak-blue.svg" alt="rouwtaak icon"></li>
+            <li><img src="/assets/photos/Mesh-Grad-blue.svg" alt="rouwtaak mesh icon"></li>
+        </ul>
+    
+        <h1>Rouwstappen van de dag</h1>
         <p>3 oefeningen open vandaag</p>
+    
+        <img src="/mnt/data/oefening%20schrijven.png" alt="Hero Background" class="hero-img">
     </section>
     <section class="rouwtaak-card">   
-        <img src="https://fdnd-agency.directus.app/assets/{{ exerciseObject.image }}" alt="{{ exerciseObject.title }} foto">
+        <a href="/het-verlies-aanvaarden"><img src="https://fdnd-agency.directus.app/assets/{{ exerciseObject.image }}" class="rouwtaak-img"
+        alt="{{ exerciseObject.title }} foto"></a>
         <button type="submit" class="start-oefening-btn">Start oefening</button>
         <section>
             <p>Schrijven</p>
@@ -29,32 +37,32 @@
         </section>  
     </section>
 
-    <section>
+    <section class="rouwtaak-card">
         <p>Lezen</p>
         <h2>Rouwen, hoe doe je dat?</h2>
         <section class="community-drops">
             <ul class="inline">
-                <li>     
+                <li class="inline">     
                     <img src="/assets/icons/community-drops-color.svg" alt="community-drops icon">
                     <P>17 community drops</P>
                 </li>
-                <li>     
+                <li class="inline">     
                     <img src="/assets/icons/time.svg" alt="time icon">
                     <P>15 min</P>
                 </li>     
             </ul>        
         </section>
     </section>
-    <section>
+    <section class="rouwtaak-card">
         <p>Meditatie</p>
         <h2>Golven van ongeloof</h2>
         <section class="community-drops">
-            <ul>
-                <li>     
+            <ul class="inline">
+                <li class="inline">     
                     <img src="/assets/icons/community-drops-color.svg" alt="rcommunity-drops icon">
                     <P>36 community drops</P>
                 </li>
-                <li>     
+                <li class="inline">     
                     <img src="/assets/icons/time.svg" alt="time icon">
                     <P>3 min</P>
                 </li>     
